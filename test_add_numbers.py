@@ -4,7 +4,7 @@ Test module for add_numbers.py
 
 
 import unittest2
-from add_numbers import add_numbers
+from add_numbers import InvalidInputException, add_numbers
 
 
 class TestAddNumbers(unittest2.TestCase):
@@ -22,6 +22,14 @@ class TestAddNumbers(unittest2.TestCase):
 	def test_multiple_comma_separted_integers(self):
 		self.assertEqual(add_numbers('1,2,3'), 6)
 		self.assertEqual(add_numbers('10,20,30,40'), 100)
+	
+	def test_valid_newline_separator(self):
+		self.assertEqual(add_numbers('1\n2,3'), 6)
+		
+	def test_invalid_separators(self):	
+		with self.assertRaises(InvalidInputException):
+			add_numbers('1,\n\n,,')
+
 
 
 if __name__ == '__main__':

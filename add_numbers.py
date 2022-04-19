@@ -3,6 +3,10 @@ The main module
 """
 
 
+class InvalidInputException(Exception):
+	def __str__(self):
+		return 'Invalid input.'
+
 def add_numbers(numbers: str) -> int:
 	"""
 	Take upto two numbers in string format and return their sum in integer format 
@@ -15,5 +19,9 @@ def add_numbers(numbers: str) -> int:
 		return int(numbers)
 	
 	if len(numbers) >= 1:
-		nums = list(map(int, numbers.split(',')))
-		return sum(nums)
+		numbers = numbers.replace('\n',',')
+		try:
+			nums = list(map(int, numbers.split(',')))
+			return sum(nums)
+		except:
+			raise InvalidInputException
