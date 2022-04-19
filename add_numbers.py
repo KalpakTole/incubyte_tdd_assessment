@@ -15,9 +15,6 @@ def add_numbers(numbers: str) -> int:
 	if numbers == '':
 		return 0
 	
-	if len(numbers) == 1:
-		return int(numbers)
-	
 	if len(numbers) >= 1:
 		numbers = numbers.replace('\n',',')
 		try:
