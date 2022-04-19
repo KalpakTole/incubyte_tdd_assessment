@@ -13,3 +13,7 @@ def add_numbers(numbers: str) -> int:
 	
 	if len(numbers) == 1:
 		return int(numbers)
+	
+	if len(numbers) >= 1:
+		nums = list(map(int, numbers.split(',')))
+		return sum(nums)
